@@ -8,7 +8,8 @@ class UserController {
    }
 
    async check(req, res) {
-      res.json('safdjasfd')
+      const {id} = req.query
+      res.json(id)
    }
 }
 
