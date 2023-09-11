@@ -2,8 +2,8 @@ import { BrowserRouter } from 'react-router-dom'
 import AppRouter from './components/AppRouter'
 import { Context } from './context/context'
 import UserStore from './store/UserStore'
-import './App.css'
 import DeviceStore from './store/DeviceStore'
+import './App.css'
 
 function App() {
 	return (

@@ -1,3 +1,4 @@
+import MainLayout from '../components/MainLayout'
 import Admin from '../pages/Admin'
 import Auth from '../pages/Auth'
 import Basket from '../pages/Basket'
@@ -12,6 +13,11 @@ import {
 	REGISTRATION_ROUTE,
 	SHOP_ROUTE,
 } from '../utils/consts'
+
+export const mainRoute = {
+	path: SHOP_ROUTE,
+	Component: <MainLayout />,
+}
 
 export const authRoutes = [
 	{

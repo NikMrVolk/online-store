@@ -1,6 +1,5 @@
 import { Route, Routes, Navigate } from 'react-router-dom'
-import { authRoutes, publicRoutes } from '../routes/routes'
-import { SHOP_ROUTE } from '../utils/consts'
+import { mainRoute, authRoutes, publicRoutes } from '../routes/routes'
 import { Context } from '../context/context'
 import { useContext } from 'react'
 
@@ -10,14 +9,16 @@ const AppRouter = () => {
 	return (
 		<div>
 			<Routes>
-				{user.isAuth &&
-					authRoutes.map(({ path, Component }) => (
+				<Route path={mainRoute.path} element={mainRoute.Component}>
+					{user.isAuth &&
+						authRoutes.map(({ path, Component }) => (
+							<Route key={path} path={path} element={Component} />
+						))}
+					{publicRoutes.map(({ path, Component }) => (
 						<Route key={path} path={path} element={Component} />
 					))}
-				{publicRoutes.map(({ path, Component }) => (
-					<Route key={path} path={path} element={Component} />
-				))}
-				<Route path="*" element={<Navigate to={SHOP_ROUTE} />} />
+					<Route path="*" element={<Navigate to={mainRoute.path} />} />
+				</Route>
 			</Routes>
 		</div>
 	)
