@@ -1,13 +1,14 @@
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Container from 'react-bootstrap/esm/Container'
 import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/esm/Button'
-import { Link, useLocation } from 'react-router-dom'
-import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../utils/consts'
+import { LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from '../utils/consts'
 
 const Auth = () => {
 	const location = useLocation()
 	const isLogin = location.pathname === LOGIN_ROUTE
+	const navigate = useNavigate()
 
 	return (
 		<Container
@@ -29,7 +30,14 @@ const Auth = () => {
 								Do you have accaunt? <Link to={LOGIN_ROUTE}>Sign in</Link>
 							</div>
 						)}
-						<Button variant={'outline-success'}>{isLogin ? 'Sign in' : 'Sign up'}</Button>
+						<Button
+							variant={'outline-success'}
+							onClick={() => {
+								navigate(SHOP_ROUTE)
+							}}
+						>
+							{isLogin ? 'Sign in' : 'Sign up'}
+						</Button>
 					</div>
 				</Form>
 			</Card>
