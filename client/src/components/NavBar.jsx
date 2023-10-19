@@ -12,6 +12,11 @@ const NavBar = observer(() => {
 	const { user } = useContext(Context)
 	const navigate = useNavigate()
 
+	const logOut = () => {
+		user.setIsAuth(false)
+		localStorage.removeItem('token')
+	}
+
 	return (
 		<Navbar bg="dark" data-bs-theme="dark">
 			<Container>
@@ -29,14 +34,7 @@ const NavBar = observer(() => {
 							>
 								Admin panel
 							</Button>
-							<Button
-								variant={'outline-light'}
-								className="ms-2"
-								onClick={() => {
-									navigate(LOGIN_ROUTE)
-									user.setIsAuth(false)
-								}}
-							>
+							<Button variant={'outline-light'} className="ms-2" onClick={logOut}>
 								Log out
 							</Button>
 						</>
@@ -45,7 +43,7 @@ const NavBar = observer(() => {
 							<Button
 								variant={'outline-light'}
 								onClick={() => {
-									user.setIsAuth(true)
+									navigate(LOGIN_ROUTE)
 								}}
 							>
 								Autorization
